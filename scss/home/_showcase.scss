@@ -1,0 +1,21 @@
+// Showcase =====================
+#showcase {
+  background: url('/img/bg-showcase.png') no-repeat center bottom/cover;
+  // height: 100vh;
+
+  h1 {
+    line-height: 1.1;
+  }
+
+  .appbar-buttons {
+    .v-btn:hover {
+      transition: all ease;
+      .v-btn__content {
+        color: #ffd600;
+        transition: all ease;
+      }
+    }
+    
+  }
+  
+}

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="dist/css/vuetify-v2.2.0-beta.0.min.css">
+  <link rel="stylesheet" href="dist/css/animate.css">
+  <link rel="stylesheet" href="dist/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="dist/css/main.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>PerfectDev</title>
+</head>
+
+<div id="perfectDev">
+
+  <body>
+    <v-app v-cloak>
+
+      <!-- Section: Navbar -->
+      <nav id="navbar">
+        <v-toolbar dense flat>
+          <v-container pa-0 class="d-flex">
+            <v-row align="center">
+              <v-col cols="6" md="2">
+                <p class="caption grey--text text--darken-4 mb-0">
+                  <v-icon small color="deep-purple accent-4">mdi-phone</v-icon>
+                  <a data-action="call" href="tel:998998594175" class="grey--text text--darken-4">+99899-859-41-75</a>
+                </p>
+              </v-col>
+              <v-col cols="4" md="7" class="hidden-sm-and-down">
+                <p class="caption grey--text text--darken-4 mb-0">
+                  <v-icon small color="deep-purple accent-4">mdi-map-marker</v-icon>
+                  1010 Avenue of the Moon, New York, NY 10018 US.
+                </p>
+              </v-col>
+              <v-col cols="6" md="3" class="text-right">
+                <v-btn small icon v-for="link in socialIcons" :key="link.id">
+                  <v-hover v-slot:default="{ hover }">
+                    <v-icon small :color="hover ? 'yellow accent-4' : 'deep-purple accent-4'">{{ link.icon }}</v-icon>
+                  </v-hover>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-toolbar>
+      </nav>
+
+      <!-- Navigation Drawer -->
+      <v-navigation-drawer v-model="drawer" fixed temporary>
+        <v-list-item class="indigo white--text py-2">
+          <v-list-item-content>
+            <v-list-item-title class="title white--text font-weight-bold">{ Perfect<span
+                class="yellow--text text--accent-4">Dev</span> }
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list>
+          <v-list-item-group color="yellow accent-4">
+            <v-list-item v-for="link in appBarLinks" :key="link.id" :href="link.href">
+              <v-list-item-content>
+                <v-list-item-title>
+                  {{ link.text }}
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+          <!-- Submenu -->
+          <v-list-group color="yellow accent-4">
+            <template v-slot:activator>
+              <v-list-item-title>All Blocks</v-list-item-title>
+            </template>
+            <v-list-item v-for="links in subLinks" :key="links.id" :href="links.href" link class="pl-8">
+              <v-list-item-title>
+                {{ links.text }}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list-group>
+        </v-list>
+
+      </v-navigation-drawer>
+
+      <v-content>
+
+        <!-- Section: Showcase -->
+        <header id="showcase" class="grey lighten-4">
+          <v-app-bar flat dark color="transparent" class="pb-12">
+            <v-container>
+              <v-row align="center" class="pt-3">
+                <v-toolbar-title class="display-1" :class="{'headline': $vuetify.breakpoint.smAndDown}">{
+                  Perfect<strong class="yellow--text text--accent-4">Dev</strong> }
+                </v-toolbar-title>
+
+                <v-spacer></v-spacer>
+
+                <div class="appbar-buttons hidden-sm-and-down">
+                  <v-btn text v-for="link in appBarLinks" :key="link.id">
+                    {{ link.text }}
+                  </v-btn>
+                  <v-menu open-on-hover bottom transition="slide-y-transition">
+                    <template v-slot:activator="{ on }">
+                      <v-btn text v-on="on">
+                        All Blocks
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item-group color="yellow accent-4">
+                        <v-list-item v-for="link in subLinks" :key="link.text" @click="() => {}" :href="link.href">
+                          <v-list-item-content>
+                            <v-list-item-title color="yellow accent-4">
+                              {{ link.text }}
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-list-item-group>
+                    </v-list>
+                  </v-menu>
+                </div>
+                <v-app-bar-nav-icon @click="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+              </v-row>
+            </v-container>
+          </v-app-bar>
+
+          <div class="pb-12 mb-12 hidden-xs-only"></div>
+
+          <!-- Showcase content -->
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="10" offset-sm="1" md="8" offset-md="2">
+                <div class="box py-12 mt-8 text-center">
+                  <h1 class="display-5 white--text mb-3 font-weight-bold"
+                    :class="{'display-3': $vuetify.breakpoint.mdAndDown, 'display-1' : $vuetify.breakpoint.smAndDown}">
+                    Create Your Own<br />Web Masterpiece</h1>
+                  <p class="white--text pb-5 font-weight-light">Every user like a potential buyer or partner, uses the
+                    Internet to search
+                    for information about goods and services. At his disposal are thousands of offers, instant
+                    consultations of experts, forums, opinions and advice.</p>
+                  <v-hover v-slot:default="{ hover }">
+                    <v-btn href="#footer" dark rounded depressed x-large
+                      :color="hover ? 'grey darken-4' : 'yellow accent-4'" class="px-10 py-4">Contact Me</v-btn>
+                  </v-hover>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+          <div class="py-12 hidden-xs-only"></div>
+        </header>
+
+        <!-- Section: Features -->
+        <section id="features" class="py-12 grey lighten-4">
+          <v-container>
+            <!-- 1 -->
+            <v-row>
+              <v-col cols="12">
+                <div class="text-center">
+                  <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                    <span class="yellow--text text--accent-4 pr-2">—</span>
+                    What We Offer
+                    <span class="yellow--text text--accent-4 pl-2">—</span>
+                  </p>
+                  <h2 class="display-2 grey--text text--darken-4 font-weight-bold"
+                    :class="{'display-1': $vuetify.breakpoint.smAndDown}">Your Main Features & Benefits</h2>
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 2 -->
+            <v-row>
+              <v-col cols="12" sm="4" md="4" class="px-10 text-center" v-for="box in featureBoxes" :key="box.id">
+                <v-sheet color="transparent">
+                  <v-img width="170px" :src="box.img" class="mx-auto"></v-img>
+                  <h3 class="title font-weight-bold pb-2">{{ box.title }}</h3>
+                  <p class="grey--text text--darken-3 font-weight-light mb-0">{{ box.text }}</p>
+                </v-sheet>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: About Me -->
+        <section id="about" class="py-12">
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="6">
+                <v-img src="img/hero-about.png"></v-img>
+              </v-col>
+              <v-col cols="12" sm="6" md="6">
+                <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                  <span class="yellow--text text--accent-4 pr-2">— </span>
+                  We Passionate About
+                </p>
+                <h2 class="display-2 grey--text text--darken-4 font-weight-bold py-3"
+                  :class="{'display-1': $vuetify.breakpoint.smAndDown}">About Me</h2>
+                <em class="grey--text text--darken-4 font-weight-medium">I am John Doe, I'm a passionate web designer &
+                  developer with 5 Years of Experience</em>
+                <p class="grey--text text--darken-3 font-weight-light py-4">Hi human, I’m John. As a passionate
+                  front-end developer, I
+                  prefer to run my own business rather than routine office work. Such lifestyle helps me enjoy my
+                  favourite hobbie – traveling. Being able to do your job in every corner of our planet is amazing!</p>
+                <ul class="pb-8">
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    CSSDA Special Kudos
+                  </li>
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    CSSDA Website of the day
+                  </li>
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    Awwwards Mobile Excellence
+                  </li>
+                </ul>
+                <v-row justify="center">
+                  <v-col cols="5" sm="6">
+                    <v-hover v-slot:default="{ hover }">
+                      <v-btn dark rounded @click.stop="openAboutDialog" depressed x-large
+                        :color="hover ? 'grey darken-4' : 'yellow accent-4'" class="px-10">Get Appoinment
+                      </v-btn>
+                    </v-hover>
+                  </v-col>
+                  <v-col cols="5" sm="6">
+                    <v-hover v-slot:default="{ hover }">
+                      <v-btn dark rounded outlined depressed x-large href="#footer"
+                        :color="hover ? 'yellow accent-4' : 'grey darken-4'" class="px-10">Contact Me</v-btn>
+                    </v-hover>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Skills -->
+        <section id="skills" class="py-12">
+          <v-container>
+            <!-- 1 -->
+            <v-card shaped img="img/bg-skills.png">
+              <v-row>
+                <v-col cols="12" md="10" offset-md="1" class="py-12">
+                  <!-- 2 -->
+                  <v-row>
+                    <v-col cols="12">
+                      <div class="text-center">
+                        <p class="subtitle-2 white--text text-uppercase font-weight-medium mb-0 mb-sm-2">
+                          <span class="yellow--text text--accent-4 pr-2">—</span>
+                          Skills
+                          <span class="yellow--text text--accent-4 pl-2">—</span>
+                        </p>
+                        <h2 class="display-2 white--text font-weight-bold mb-2"
+                          :class="{'display-1': $vuetify.breakpoint.smAndDown}">My Skills</h2>
+                      </div>
+                    </v-col>
+                  </v-row>
+                  <!-- 3 -->
+                  <v-row>
+                    <v-col cols="12" sm="6" md="6" v-for="item in skills" :key="item.id">
+                      <div class="text-center white--text pb-1">
+                        <p class="subtitle-1 font-weight-bold">Personal Skills</p>
+                      </div>
+                      <v-sheet color="transparent" class="px-10 white--text" v-for="bar in item.col" :key="bar.id">
+                        <div class="d-flex justify-space-between">
+                          <span class="text-uppercase">{{ bar.title }}</span>
+                          <span>{{bar.percent}}%</span>
+                        </div>
+                        <v-progress-linear stream rounded :value="bar.percent" height="10" color="white" class="mb-5">
+                        </v-progress-linear>
+                      </v-sheet>
+                    </v-col>
+                  </v-row>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-container>
+        </section>
+
+        <!-- Section: Our Services -->
+        <section id="services" class="py-12">
+          <v-container>
+            <!-- 1 -->
+            <v-row>
+              <v-col cols="12">
+                <div class="text-center">
+                  <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                    <span class="yellow--text text--accent-4 pr-2">—</span>
+                    Tons Of Awesome Services
+                    <span class="yellow--text text--accent-4 pl-2">—</span>
+                  </p>
+                  <h2 class="display-2 grey--text text--darken-4 font-weight-bold"
+                    :class="{'display-1': $vuetify.breakpoint.smAndDown}">Our Services</h2>
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 2 -->
+            <v-row class="pb-12">
+              <v-col cols="12" sm="4" md="4" class="px-10 text-center" v-for="box in serviceBoxes" :key="box.id">
+                <v-sheet color="transparent">
+                  <v-img width="170px" :src="box.img" class="mx-auto"></v-img>
+                  <h3 class="title font-weight-bold pb-2">{{ box.title }}</h3>
+                  <p class="grey--text text--darken-3 font-weight-light mb-0">{{ box.text }}</p>
+                </v-sheet>
+              </v-col>
+            </v-row>
+            <!-- 3 -->
+            <v-row justify="center" align="center">
+              <v-col cols="12" md="8" offset-md="3" class="px-10 pt-12 pb-0 mx-auto">
+                <v-divider></v-divider>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Projects -->
+        <section id="projects" class="py-12">
+          <v-container>
+            <!-- 1 -->
+            <v-row>
+              <v-col cols="12">
+                <div class="text-center pb-8">
+                  <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                    <span class="yellow--text text--accent-4 pr-2">—</span>
+                    My Works
+                    <span class="yellow--text text--accent-4 pl-2">—</span>
+                  </p>
+                  <h2 class="display-2 grey--text text--darken-4 font-weight-bold"
+                    :class="{'display-1': $vuetify.breakpoint.smAndDown}">Projects</h2>
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 2 -->
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-img src="img/hero-projects.png"></v-img>
+              </v-col>
+              <v-col cols="12" md="6" class="pt-8 px-sm-10 px-md-3">
+                <h3 class="title grey--text text--darken-4 mb-2">Designing Prints</h3>
+                <p class="grey--text text--darken-2 font-weight-light">While I mostly focus on working with web
+                  Works, sometimes I am also eager to work with some print design. The examples include designing some
+                  ambient advertising materials for top ad companies on the Madison Avenue, just as well as creating
+                  book illustrations and book covers and music albums cover art… But regardless of what kind of task is
+                  lying before me, rest assured that I will make it work!</p>
+                <ul>
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    Designing Prints
+                  </li>
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    Web Design
+                  </li>
+                </ul>
+                <div class="py-8">
+                  <v-hover v-slot:default="{ hover }">
+                    <v-btn dark rounded depressed x-large outlined @click.stop="openProjectDialog"
+                      :color="hover ? 'deep-purple accent-4' : 'yellow accent-4'" class="px-10">Read More</v-btn>
+                  </v-hover>
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 3 -->
+            <v-row>
+              <v-col cols="12" md="5" class="pt-8 px-sm-10 px-md-3">
+                <h3 class="title grey--text text--darken-4 mb-2">Designing for Mobile</h3>
+                <p class="grey--text text--darken-2 font-weight-light">As one Microsoft executive once said, some 2 or 3
+                  years ago, the future of any web property lies within the realm of mobile websites. Today, with more
+                  than half of the Western world’s web traffic coming from either a smartphone or a tablet computer,
+                  this just cannot be truer. This said, I offer you my services in making sure that amid all other
+                  millions of competitors online, it will be your mobile site’s design which will truly stand out!</p>
+                <ul>
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    Web Design
+                  </li>
+                  <li class="font-weight-medium mb-1">
+                    <span class="d-inline-flex align-center pr-2">
+                      <v-icon small color="yellow accent-4">mdi-circle</v-icon>
+                    </span>
+                    Designing Apps
+                  </li>
+                </ul>
+                <div class="py-8">
+                  <v-hover v-slot:default="{ hover }">
+                    <v-btn dark rounded depressed x-large outlined @click.stop="openProjectDialog"
+                      :color="hover ? 'deep-purple accent-4' : 'yellow accent-4'" class="px-10">Read More</v-btn>
+                  </v-hover>
+                </div>
+              </v-col>
+              <v-col cols="12" md="6" offset-md="1">
+                <v-img src="img/hero-projects-2.png"></v-img>
+              </v-col>
+              <!-- Project Dialog -->
+              <v-dialog v-model="projectDialog" width="600px" content-class="project-dialog">
+
+                <v-card dark flat color="purple darken-3" class="white--text py-8 px-2">
+                  <v-btn fab depressed absolute right small color="yellow accent-4" @click="projectDialog = false">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                  <v-card-title class="title font-weight-bold text-uppercase pb-2">Read More
+                  </v-card-title>
+                  <v-card-subtitle class="subtitle-1 text-uppercase pb-0 mt-0">General Information</v-card-subtitle>
+                  <v-card-text>Welcome to our Privacy Policy page! When you use our web site services, you trust us with
+                    your information. This Privacy Policy is meant to help you understand what data we collect, why we
+                    collect it, and what we do with it. When you share information with us, we can make our services
+                    even better for you. For instance, we can show you more relevant search results and ads, help you
+                    connect with people or to make sharing with others quicker and easier. As you use our services, we
+                    want you to be clear how we’re using information and the ways in which you can protect your privacy.
+                    This is important; we hope you will take time to read it carefully. Remember, you can find controls
+                    to manage your information and protect your privacy and security. We’ve tried to keep it as simple
+                    as possible.</v-card-text>
+                  <v-card-text class="text-uppercase pb-0">Right To Access, Correct And Delete Data And To Object To
+                    Data Processing</v-card-text>
+                  <v-card-text>
+                    Our customers have the right to access, correct and delete personal data relating to them, and to
+                    object to the processing of such data, by addressing a written request, at any time. The Company
+                    makes every effort to put in place suitable precautions to safeguard the security and privacy of
+                    personal data, and to prevent it from being altered, corrupted, destroyed or accessed by
+                    unauthorized third parties. However, the Company does not control each and every risk related to the
+                    use of the Internet, and therefore warns the Site users of the potential risks involved in the
+                    functioning and use of the Internet. The Site may include links to other web sites or other internet
+                    sources. As the Company cannot control these web sites and external sources, the Company cannot be
+                    held responsible for the provision or display of these web sites and external sources, and may not
+                    be held liable for the content, advertising, products, services or any other material available on
+                    or from these web sites or external sources.
+                  </v-card-text>
+                  <v-card-text class="text-uppercase pb-0">Right To Access, Correct And Delete Data And To Object To
+                    Data Processing</v-card-text>
+                  <v-card-text>
+                    You can view or edit your personal data online for many of our services. You can also make choices
+                    about our collection and use of your data. How you can access or control your personal data will
+                    depend on which services you use. You can choose whether you wish to receive promotional
+                    communications from our web site by email, SMS, physical mail, and telephone. If you receive
+                    promotional email or SMS messages from us and would like to opt out, you can do so by following the
+                    directions in that message. You can also make choices about the receipt of promotional email,
+                    telephone calls, and postal mail by visiting and signing into Company Promotional Communications
+                    Manager, which allows you to update contact information, manage contact preferences, opt out of
+                    email subscriptions, and choose whether to share your contact information with our partners. These
+                    choices do not apply to mandatory service communications that are part of certain web site services.
+                  </v-card-text>
+                </v-card>
+              </v-dialog>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Feedback -->
+        <section id="feedback" class="py-12">
+          <v-container>
+            <!-- 1 -->
+            <v-row>
+              <v-col cols="12" class="text-center">
+                <h2 class="display-2 white--text font-weight-bold mb-2"
+                  :class="{'display-1': $vuetify.breakpoint.smAndDown}">Feedback</h2>
+                <img src="img/feedback-wave.png" />
+              </v-col>
+            </v-row>
+            <!-- 2 -->
+            <v-row justify="center" class="pb-12">
+              <v-col cols="12" sm="2" class="hidden-sm-and-down pb-8 quote-1">
+                <v-icon size="85" color="#ffffff80">mdi-format-quote-open</v-icon>
+              </v-col>
+              <v-col cols="12" sm="10" md="8" lg="7" class="pt-0">
+                <v-carousel hide-delimiters height="350">
+                  <v-carousel-item v-for="slide in feedbackSlides" :key="slide.id" class="text-center">
+                    <v-sheet height="100%" color="transparent">
+                      <v-row align="center" justify="center" class="fill-height">
+                        <div class="content">
+                          <v-avatar size="80px">
+                            <img :src="slide.img" :alt="slide.author">
+                          </v-avatar>
+                          <div class="grey--text text--darken-4 font-weight-light">
+                            <p class="mt-6 mb-8">{{ slide.text }}</p>
+                            <p class="font-weight-bold mb-0">{{ slide.author }}</p>
+                            <small class="body-2">{{ slide.job }}</small>
+                          </div>
+                        </div>
+                      </v-row>
+                    </v-sheet>
+                  </v-carousel-item>
+                </v-carousel>
+              </v-col>
+              <v-col cols="12" sm="2" class="text-right hidden-sm-and-down pt-8">
+                <v-icon size="85" color="#ffffff80">mdi-format-quote-close</v-icon>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Team -->
+        <section id="team" class="py-12">
+          <v-container>
+            <!-- 1 -->
+            <v-row>
+              <v-col cols="12">
+                <div class="text-center pb-8">
+                  <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                    <span class="yellow--text text--accent-4 pr-2">—</span>
+                    Teams
+                    <span class="yellow--text text--accent-4 pl-2">—</span>
+                  </p>
+                  <h2 class="display-2 grey--text text--darken-4 font-weight-bold"
+                    :class="{'display-1': $vuetify.breakpoint.smAndDown}">Our Team</h2>
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 2 -->
+            <v-row>
+              <v-col cols="12" sm="6" md="4" v-for="team in teamBoxes" :key="team.id">
+                <v-card>
+                  <v-img :src="team.img"></v-img>
+                </v-card>
+                <div class="text-center mt-3">
+                  <h3 class="headline grey--text text--darken-3">{{ team.title }}</h3>
+                  <p class="subtitle-1 grey--text text--darken-4 font-weight-medium mb-2">{{ team.job }}</p>
+                  <v-btn small icon v-for="link2 in socialIcons" :key="link2.id">
+                    <v-hover v-slot:default="{ hover }">
+                      <v-icon small :color="hover ? 'yellow accent-4' : 'deep-purple accent-4'">{{ link2.icon }}
+                      </v-icon>
+                    </v-hover>
+                  </v-btn>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+        <!-- 3 -->
+        <v-row justify="center">
+          <v-col cols="12" md="8" offset-md="3" class="px-10 py-12 mx-auto">
+            <v-divider></v-divider>
+          </v-col>
+        </v-row>
+
+        <!-- Section: FQA's -->
+        <section id="faqs" class="py-12">
+          <v-container>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-img src="img/hero-fqa.png"></v-img>
+              </v-col>
+              <v-col cols="12" md="6">
+                <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                  <span class="yellow--text text--accent-4 pr-2">— </span>
+                  Frequently Asked Questions
+                </p>
+                <h2 class="display-2 grey--text text--darken-4 font-weight-bold text-uppercase py-3"
+                  :class="{'display-1': $vuetify.breakpoint.smAndDown}">Faq</h2>
+                <v-expansion-panels accordion v-model="fpanel">
+                  <v-expansion-panel v-for="(fpanel, index) in fqaPanels" :key="index">
+                    <v-expansion-panel-header ripple class="subtitle-1 grey--text text--darken-4 font-weight-bold">
+                      {{ fpanel.title  }}
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content class="body-2 grey--text text--darken-2">
+                      {{ fpanel.text }}
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: FAQs 2 -->
+        <section id="faqs-2" class="py-12">
+          <v-container>
+            <v-row align="center">
+              <v-col cols="12" md="12">
+                <div class="white--text text-center">
+                  <v-icon size="85" color="#e7e6e694">mdi-format-quote-close</v-icon>
+                  <h3 class="font-weight-light font-italic mb-2" :class="{'headline': $vuetify.breakpoint.smAndDown}">
+                    Software is a great combination between artistry and
+                    engineering
+                  </h3>
+                  <p class="title">Bill Gates</p>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Our Partners -->
+        <section id="partners" class="py-12">
+          <v-container>
+            <!-- 1 -->
+            <v-row>
+              <v-col cols="12">
+                <div class="text-center pb-8">
+                  <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                    <span class="yellow--text text--accent-4 pr-2">—</span>
+                    Partners
+                    <span class="yellow--text text--accent-4 pl-2">—</span>
+                  </p>
+                  <h2 class="display-2 grey--text text--darken-4 font-weight-bold"
+                    :class="{'display-1': $vuetify.breakpoint.smAndDown}">Our Partners</h2>
+                </div>
+              </v-col>
+            </v-row>
+            <!-- 2 -->
+            <v-row>
+              <v-col cols="12" sm="6" md="3" v-for="partner in partnerBoxes" :key="partner.id">
+                <v-card outlined>
+                  <v-img :src="partner.img"></v-img>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Call To Action -->
+        <section id="cta" class="py-12">
+          <v-container>
+            <v-card shaped img="img/bg-skills.png">
+              <v-row>
+                <v-col cols="12" class="pa-0">
+                  <div class="box text-center">
+                    <h2 class="display-2 white--text font-weight-black"
+                      :class="{'display-1' : $vuetify.breakpoint.smAndDown}">How
+                      can we help your
+                      business?</h2>
+                    <p class="grey--text text--lighten-3 mt-6 mb-8">Set your own time and we'll call you back.</p>
+                    <v-hover v-slot:default="{ hover }">
+                      <v-btn dark rounded x-large depressed @click.stop="openAboutDialog"
+                        :color="hover ? 'grey darken-4' : 'yellow accent-4'" class="px-6">Request A Callback
+                      </v-btn>
+                    </v-hover>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-container>
+        </section>
+
+        <!-- Section: Contact Us -->
+        <section id="contact" class="py-12">
+          <v-container>
+            <v-row>
+              <v-col cols="12" md="4">
+                <p class="subtitle-2 grey--text text--darken-3 text-uppercase font-weight-medium mb-0 mb-sm-2">
+                  <span class="yellow--text text--accent-4 pr-2">—</span>
+                  Contacts
+                </p>
+                <h2 class="display-2 grey--text text--darken-4 font-weight-bold"
+                  :class="{'display-1': $vuetify.breakpoint.smAndDown}">Contact Us</h2>
+                <div class="py-7 pr-7">
+                  <p class="grey--text text--darken-3 font-weight-light">
+                    <v-icon small color="yellow accent-4" class="pr-2">mdi-phone</v-icon>1-234-567-89
+                  </p>
+                  <p class="grey--text text--darken-3 font-weight-light">
+                    <v-icon small color="yellow accent-4" class="pr-2">mdi-map-marker</v-icon>1010 Avenue of the Moon,
+                    New York,
+                    NY
+                    10018 US
+                  </p>
+                  <p class="grey--text text--darken-3 font-weight-light">
+                    <v-icon small color="yellow accent-4" class="pr-2">mdi-timer</v-icon>Mon - Sat 8.00 - 18.00. Sunday
+                    CLOSED
+                  </p class="grey--text text--darken-3">
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
+
+        <!-- Section: Footer -->
+        <section id="footer" class="pt-10">
+          <v-footer dark padless color="transparent">
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <div class="white--text text-center">
+                    <h3 class="display-1 font-weight-bold" :class="{'headline': $vuetify.breakpoint.smAndDown}">{
+                      Perfect<strong class="yellow--text text--accent-4">Dev</strong> }</h3>
+                    <p class="body-2 grey--text text--lighten-2 my-5">Every user like a potential buyer or
+                      partner,
+                      uses the
+                      Internet to search for <br class="hidden-sm-and-down"> information about goods and services.</p>
+                    <div class="py-3">
+                      <v-btn v-for="icon in socialIcons" :key="icon.id" icon>
+                        <v-hover v-slot:default="{ hover }">
+                          <v-icon size="20px" :color="hover ? 'yellow accent-4' : 'white'">
+                            {{ icon.icon }}</v-icon>
+                        </v-hover>
+                      </v-btn>
+                    </div>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-footer>
+          <!-- Subfooter -->
+          <div class="deep-purple darken-2 white--text text-center">
+            <p class="caption mb-0 py-4">Copyright &copy; {{ new Date().getFullYear() }} | Cloned With <v-icon small
+                color="red">mdi-heart</v-icon> by M96</p>
+          </div>
+        </section>
+
+        <!-- Call Panel -->
+        <div id="call-panel" class="px-5">
+          <v-menu :close-on-content-click="false" fixed offset-y content-class="call-panel-menu"
+            transition="scale-transition">
+            <template v-slot:activator="{ on }">
+              <v-btn x-large fab bottom fixed v-on="on">
+                <v-icon large color="yellow accent-4">mdi-phone</v-icon>
+              </v-btn>
+            </template>
+
+            <v-card class="text-center" width="300">
+              <v-card-text>
+                <v-icon size="80" color="yellow accent-4">mdi-account-circle</v-icon>
+                <div class="grey--text text--darken-3 font-weight-light">
+                  <h3 class="font-weight-light">Mirjahon Jamoldinov</h3>
+                  <p class="mb-0 py-1">Web Developer</p>
+                  <a data-action="call" href="tel:998998594175">
+                    <v-icon small color="grey darken-2">mdi-phone</v-icon> +99899-859-41-75
+                  </a>
+                </div>
+              </v-card-text>
+
+              <v-divider class="pb-2"></v-divider>
+
+              <v-expand-transition>
+                <div v-show="showPanel">
+                  <v-btn x-large icon v-for="icon in callPanelIcons" :key="icon.id" class="px-2">
+                    <v-icon large :color="icon.color">{{ icon.icon }}</v-icon>
+                  </v-btn>
+                </div>
+              </v-expand-transition>
+
+              <div class="action-btn">
+                <v-btn icon @click="showPanel = !showPanel" class="btn-fucka">
+                  <v-icon>{{ showPanel ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                </v-btn>
+              </div>
+            </v-card>
+          </v-menu>
+        </div>
+
+        <!-- Chat Panel -->
+        <div id="chat-panel">
+          <v-menu :close-on-content-click="false" v-model="hideChatPanel" fixed offset-y max-width="420"
+            content-class="chat-panel-menu" transition="slide-y-transition">
+            <template v-slot:activator="{ on }">
+              <v-btn large fab right bottom depressed fixed v-on="on" class="chat-btn">
+                <v-tooltip v-model="showTooltip" left z-index="5" color="green accent-4">
+                  <template v-slot:activator="{ on }">
+                    <v-avatar size="65" v-on="on">
+                      <v-img src="img/chat-img.webp"></v-img>
+                    </v-avatar>
+                  </template>
+                  <span class="caption">Hey, I'm ready to help you!</span>
+                </v-tooltip>
+              </v-btn>
+            </template>
+
+            <v-tabs vertical icons-and-text hide-slider class="chat-vertical-tabs" color="success">
+              <!-- Content -->
+              <!-- 1 -->
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text class="d-flex align-center px-2 pt-2 pb-0 select">
+                    <v-select flat :items="langs" hide-details solo color="grey" return-object dense label="Lang">
+                      <template slot="selection" slot-scope="data">
+                        <img :src="data.item.avatar" width="25px">
+                        <div class="pl-2">{{ data.item.text }}</div>
+                      </template>
+                      <template slot="item" slot-scope="data">
+                        <img :src="data.item.avatar" width="25px">
+                        <v-list-item-content class="pl-2">
+                          <v-list-item-title> {{ data.item.text }}
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                    </v-select>
+                    <h5 class="subtitle-1 grey--text text--darken-4 text-uppercase font-weight-bold ml-8">Billing</h5>
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-text class="text-center grey--text text--darken-3">
+                    <p class="mb-0 pt-4">Is there any billing problem?</p>
+                    <p class="mb-2">Let us resolve it.</p>
+                    <v-form ref="chatForm1" v-model="validChat1" :lazy-validation="lazy">
+                      <v-row>
+                        <v-col cols="12" class="pb-0">
+                          <v-text-field solo outlined prepend-inner-icon="mdi-clipboard-text" dense flat
+                            label="Transaction ID (optional)">
+                          </v-text-field>
+                        </v-col>
+                        <v-col cols="12" class="pb-0 pt-1">
+                          <v-text-field v-model="chatName1" :rules="chatNameRules" solo outlined
+                            prepend-inner-icon="mdi-email" dense flat label="Name" required>
+                          </v-text-field>
+                        </v-col>
+                        <v-col cols="12" class="pb-0 pt-1">
+                          <v-text-field v-model="chatEmail1" :rules="chatEmailRules" solo outlined
+                            prepend-inner-icon="mdi-email" dense flat label="Email Address" required>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <div class="chat-footer">
+                        <v-btn large light :disabled="!validChat1" block color="primary" @click="validate1"
+                          v-on:click="chatLoader = 'chatLoading'" :loading="chatLoading" class="text-capitalize mb-4">
+                          <i class="mdi mdi-chat-processing-outline mdi-18px mr-1"></i>
+                          Start Chat
+                        </v-btn>
+                        <p class="caption">By clicking the button, you agree to the <a href="#!"
+                            class="blue--text">Privacy Policy</a>
+                          and <a href="#!" class="blue--text">Terms of Use</a>
+                        </p>
+                      </div>
+                    </v-form>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+              <!-- 2 -->
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text class="d-flex align-center px-2 pt-2 pb-0 select">
+                    <v-select flat :items="langs" hide-details solo color="grey" return-object dense label="Lang">
+                      <template slot="selection" slot-scope="data">
+                        <img :src="data.item.avatar" width="25px">
+                        <div class="pl-2">{{ data.item.text }}</div>
+                      </template>
+                      <template slot="item" slot-scope="data">
+                        <img :src="data.item.avatar" width="25px">
+                        <v-list-item-content class="pl-2">
+                          <v-list-item-title> {{ data.item.text }}
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                    </v-select>
+                    <h5 class="subtitle-1 grey--text text--darken-4 text-uppercase font-weight-bold ml-8">Support</h5>
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-text class="text-center grey--text text--darken-3">
+                    <p class="mb-0 pt-8">Do you have questions about the product you've purchased?</p>
+                    <p class="mb-2">We'll gladly help you to sort out the problem.</p>
+                    <v-form ref="chatForm2" v-model="validChat2" :lazy-validation="lazy">
+                      <v-row>
+                        <v-col cols="12" class="pb-0">
+                          <v-text-field v-model="chatOrder2" :rules="chatOrderRules" solo outlined
+                            prepend-inner-icon="mdi-clipboard-text" dense flat label="Order ID" required>
+                          </v-text-field>
+                        </v-col>
+                        <v-col cols="12" class="pb-0">
+                          <v-text-field solo outlined prepend-inner-icon="mdi-file-document-box-outline" dense flat
+                            label="Order ID" append-icon="mdi-chevron-down" disabled>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <div class="chat-footer">
+                        <v-btn large light :disabled="!validChat2" block color="primary" @click="validate2"
+                          v-on:click="chatLoader = 'chatLoading'" :loading="chatLoading" class="text-capitalize mb-4">
+                          <i class="mdi mdi-chat-processing-outline mdi-18px mr-1"></i>
+                          Start Chat
+                        </v-btn>
+                        <p class="caption">By clicking the button, you agree to the <a href="#!"
+                            class="blue--text">Privacy Policy</a>
+                          and <a href="#!" class="blue--text">Terms of Use</a>
+                        </p>
+                      </div>
+                    </v-form>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+              <!-- 3 -->
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text class="d-flex align-center px-2 pt-2 pb-0 select">
+                    <v-select flat :items="langs" hide-details solo color="grey" return-object dense label="Lang">
+                      <template slot="selection" slot-scope="data">
+                        <img :src="data.item.avatar" width="25px">
+                        <div class="pl-2">{{ data.item.text }}</div>
+                      </template>
+                      <template slot="item" slot-scope="data">
+                        <img :src="data.item.avatar" width="25px">
+                        <v-list-item-content class="pl-2">
+                          <v-list-item-title> {{ data.item.text }}
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                    </v-select>
+                    <h5 class="subtitle-1 grey--text text--darken-4 text-uppercase font-weight-bold ml-8">Pre-Sales</h5>
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-text class="text-center grey--text text--darken-3">
+                    <p class="mb-0 pt-8">Have questions regarding product selection?</p>
+                    <p class="mb-2">We will gladly help you in choosing the most suitable
+                      product for you.</p>
+                    <v-form ref="chatForm3" v-model="validChat3" :lazy-validation="lazy">
+                      <v-row>
+                        <v-col cols="12" class="pb-0">
+                          <v-text-field v-model="chatName3" :rules="chatNameRules" solo outlined
+                            prepend-inner-icon="mdi-account-tie" dense flat label="First name" required>
+                          </v-text-field>
+                        </v-col>
+                        <v-col cols="12" class="pb-0">
+                          <v-text-field v-model="chatEmail3" :rules="chatEmailRules" solo outlined
+                            prepend-inner-icon="mdi-email" dense flat label="E-mail" required>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <div class="chat-footer">
+                        <v-btn large light :disabled="!validChat3" block color="primary" @click="validate2"
+                          v-on:click="chatLoader = 'chatLoading'" :loading="chatLoading" class="text-capitalize mb-4">
+                          <i class="mdi mdi-chat-processing-outline mdi-18px mr-1"></i>
+                          Start Chat
+                        </v-btn>
+                        <p class="caption">By clicking the button, you agree to the <a href="#!"
+                            class="blue--text">Privacy Policy</a>
+                          and <a href="#!" class="blue--text">Terms of Use</a>
+                        </p>
+                      </div>
+                    </v-form>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+
+              <!-- Close Chat Panel Button -->
+              <div class="hide-tabs-btn pt-2">
+                <v-btn icon @click="hidePanel">
+                  <v-icon>mdi-chevron-down</v-icon>
+                </v-btn>
+              </div>
+
+              <!-- Vertical Tabs -->
+              <!-- 1 -->
+              <v-tab active-class="white">
+                <div class="mb-0">
+                  <v-icon>mdi-wallet-outline</v-icon>
+                  <p class="body-2 text-capitalize mb-0 pt-1">Billing</p>
+                </div>
+              </v-tab>
+              <!-- 2 -->
+              <v-tab active-class="white">
+                <div class="mb-0">
+                  <v-icon>mdi-headset</v-icon>
+                  <p class="body-2 text-capitalize mb-0 pt-1">Support</p>
+                </div>
+              </v-tab>
+              <!-- 3 -->
+              <v-tab active-class="white">
+                <div class="mb-0">
+                  <v-icon>mdi-gift-outline</v-icon>
+                  <p class="body-2 text-capitalize mb-0 pt-1">Pre-Sales</p>
+                </div>
+              </v-tab>
+            </v-tabs>
+          </v-menu>
+          <!-- Snackbar -->
+          <v-snackbar v-model="chatSnackbar" :timeout="timeout">
+            Your message is sended!
+            <v-icon color="yellow accent-4">mdi-check-circle</v-icon>
+            <v-btn color="indigo" text @click="chatSnackbar = false">
+              Close
+            </v-btn>
+          </v-snackbar>
+        </div>
+
+        <!-- Request Dialog -->
+        <v-dialog v-model="aboutDialog" width="600" content-class="about-dialog">
+          <v-card img="img/bg-fqa.jpg" class="white--text text-center">
+            <v-card-title class="display-2 pa-10 justify-center font-weight-black"
+              :class="{'headline': $vuetify.breakpoint.smAndDown}">
+              Request a Callback
+            </v-card-title>
+            <v-card-subtitle class="grey--text text--lighten-2">
+              We can call you in 30 seconds, just enter your number below
+            </v-card-subtitle>
+            <v-card-text class="px-10 pt-2">
+              <v-form ref="aboutForm" v-model="validAboutForm" lazy-validation>
+                <v-row>
+                  <v-col cols="12" class="">
+                    <v-text-field v-model="aboutName" :rules="chatNameRules" hide-details solo outlined flat
+                      label="Name *" required>
+                    </v-text-field>
+                  </v-col>
+                  <v-col cols="12" class="">
+                    <v-text-field v-model="aboutEmail" :rules="chatEmailRules" hide-details solo outlined flat
+                      label="Email *" required>
+                    </v-text-field>
+                  </v-col>
+                </v-row>
+                <div class="pt-5 pb-3">
+                  <v-hover v-slot:default="{ hover }">
+                    <v-btn dark rounded outlined depressed x-large :color="hover ? 'yellow accent-4' : ''" class="px-12"
+                      @click="validateAboutDialog">
+                      Request
+                    </v-btn>
+                  </v-hover>
+                </div>
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+
+        <!-- Back To Top -->
+        <div class="backToTop">
+          <v-hover v-slot:default="{ hover }">
+            <v-btn v-scroll="onScroll" fab dark depressed fixed bottom
+              :color="hover ? 'grey darken-4' : 'yellow accent-4'" @click="toTop" class="backToTop">
+              <v-icon>mdi-chevron-up</v-icon>
+            </v-btn>
+          </v-hover>
+        </div>
+
+
+        <!-- End -->
+      </v-content>
+
+    </v-app>
+</div>
+
+<script src="js/vue.js"></script>
+<script src="js/vuetify-v2.2.0-beta.0.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>

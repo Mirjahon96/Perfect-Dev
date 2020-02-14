@@ -1,0 +1,34 @@
+#faqs {
+  position: relative;
+
+  .v-expansion-panel {
+    &::before {
+      box-shadow: none !important;
+    }
+
+    &-header {
+      padding-left: 0;
+      padding-right: 0;
+      &:hover {
+        color: #e4d93c !important;
+      }
+    }
+
+    &-content__wrap {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  // FAQs 2
+  &-2 {
+    position: relative;
+    background: url('/img/bg-fqa.jpg') no-repeat;
+    background-position: left center;
+    // background-attachment: fixed;
+  
+    h3 {
+      font-size: 30px;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+  // Call Panel
+  .call-panel-menu {
+    top: unset !important;
+    bottom: 15px !important;
+  }
+
+  .chat-panel-menu {
+    top: unset !important;
+    bottom: 0 !important;
+    right: 0 !important;
+  }
+
+  // Chat Panel
+  #chat-panel {
+    position: relative;
+
+    .chat-btn {
+      z-index: 10;
+      bottom: 7px;
+    }
+  }
+
+  .chat-footer {
+    a {
+      font-weight: bold !important;
+    }
+   }
+
+  // Close Button
+  .hide-tabs-btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 28px;
+  }
+
+  .chat-vertical-tabs {
+    flex-direction: row-reverse;
+
+
+    .v-tabs-bar {
+      background: linear-gradient(180deg, #fff8e1 0%, #ddf7e5 100%);
+    }
+
+    .v-tabs-bar__content {
+      text-align: center;
+      // justify-content: center !important;
+      justify-content: flex-end;
+      padding-bottom: 75px;
+    }
+
+    .v-tabs-items {
+      flex: unset;
+    }
+  }
+
+  // Select
+  .select {
+    .v-input {
+      flex: unset !important;
+      width: 100px !important;
+    }
+  }
+  

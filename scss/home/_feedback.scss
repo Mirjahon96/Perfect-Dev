@@ -1,0 +1,17 @@
+#feedback {
+  position: relative;
+  background: url('/img/bg-feedback.png') no-repeat left top/cover;
+
+  .content {
+    padding: 0 10%;
+  }
+
+  .quote-1 {
+    position: relative;
+
+    i {
+      position: absolute;
+      bottom: 30px;
+    }
+  }
+}
