@@ -224,6 +224,7 @@ new Vue({
     }
   },
   methods: {
+
     // About Dialog
     openAboutDialog() {
       this.aboutDialog = true
@@ -285,13 +286,6 @@ new Vue({
       setTimeout(() => ((this[l] = false)), 4000);
 
       this.chatLoader = null;
-    }
+    },
   },
-
-  beforeCreate() {
-    this.showLoader = true
-  },
-  mounted() {
-    this.showLoader = false
-  }
 });

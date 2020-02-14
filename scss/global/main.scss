@@ -51,3 +51,7 @@ html, body {
     bottom: 85px
   }
 }
+
+[v-cloak] {
+  display: none;
+}
