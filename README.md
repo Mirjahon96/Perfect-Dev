@@ -1,5 +1,5 @@
 # Perfect-Dev
-Vuetify Static Landing Page
+Static Landing Page with Vuetify & Vue.js
 
 Live [Demo](https://perfect-dev.netlify.com)
 
